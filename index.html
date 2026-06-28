@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlgoVision X | DSA Learning Platform</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <h2>AlgoVision X</h2>
+
+        <ul>
+
+            <li onclick="selectDS('Array')">
+                Array
+            </li>
+
+            <li onclick="selectDS('String')">
+                String
+            </li>
+
+            <li onclick="selectDS('Stack')">
+                Stack
+            </li>
+
+            <li onclick="selectDS('Queue')">
+                Queue
+            </li>
+
+            <li onclick="selectDS('Linked List')">
+                Linked List
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <!-- HERO SECTION -->
+
+        <section class="hero">
+
+            <h1>
+                Interactive DSA Learning Platform
+            </h1>
+
+            <p>
+                Learn Data Structures & Algorithms through
+                Visualization, Complexity Analysis and C++ Code.
+            </p>
+
+        </section>
+
+        <!-- DASHBOARD -->
+
+        <section class="dashboard">
+
+            <div class="dash-card">
+
+                <h3>Selected DS</h3>
+
+                <p id="dashDS">
+                    Array
+                </p>
+
+            </div>
+
+            <div class="dash-card">
+
+                <h3>Total Elements</h3>
+
+                <p id="dashElements">
+                    0
+                </p>
+
+            </div>
+
+            <div class="dash-card">
+
+                <h3>Current Operation</h3>
+
+                <p id="dashOperation">
+                    None
+                </p>
+
+            </div>
+
+            <div class="dash-card">
+
+                <h3>Complexity</h3>
+
+                <p id="dashComplexity">
+                    -
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- SELECTED DS -->
+
+        <section class="card">
+
+            <h2>
+                Selected Data Structure
+            </h2>
+
+            <h3 id="selectedDS">
+                Array
+            </h3>
+
+        </section>
+
+        <!-- INPUT SECTION -->
+
+        <section class="card">
+
+            <h2>
+                Input Data
+            </h2>
+
+            <input
+            type="text"
+            id="userInput"
+            placeholder="Example: 10 20 30 40 50">
+
+            <button onclick="showOperations()">
+                Continue
+            </button>
+
+        </section>
+
+        <!-- OPERATIONS -->
+
+        <section class="card">
+
+            <h2>
+                Operations
+            </h2>
+
+            <div id="operationContainer">
+
+                Select Data Structure
+
+            </div>
+
+        </section>
+
+        <!-- ALGORITHMS -->
+
+        <section class="card">
+
+            <h2>
+                Available Algorithms
+            </h2>
+
+            <div id="algorithmContainer">
+
+                Algorithms will appear here
+
+            </div>
+
+        </section>
+
+        <!-- VISUALIZATION -->
+
+        <section class="card">
+
+            <h2>
+                Visualization
+            </h2>
+
+            <div id="visualizer">
+
+                Visualization Area
+
+            </div>
+
+        </section>
+
+        <!-- STEP EXPLANATION -->
+
+        <section class="card">
+
+            <h2>
+                Step-by-Step Explanation
+            </h2>
+
+            <div id="explanation">
+
+                Explanation will appear here
+
+            </div>
+
+        </section>
+
+        <!-- COMPLEXITY -->
+
+        <section class="card">
+
+            <h2>
+                Time & Space Complexity
+            </h2>
+
+            <table>
+
+                <tr>
+
+                    <th>Case</th>
+
+                    <th>Complexity</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>Best</td>
+
+                    <td id="bestCase">
+                        -
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Average</td>
+
+                    <td id="avgCase">
+                        -
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Worst</td>
+
+                    <td id="worstCase">
+                        -
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Space</td>
+
+                    <td id="spaceCase">
+                        -
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+        <!-- C++ CODE -->
+
+        <section class="card">
+
+            <h2>
+                C++ Implementation
+            </h2>
+
+            <pre>
+<code id="cppCode">
+
+Select Any Algorithm To View Code
+
+</code>
+            </pre>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
