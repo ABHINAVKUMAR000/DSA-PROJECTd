@@ -1,293 +1,823 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AlgoVision X | DSA Learning Platform</title>
 
+    <meta name="description"
+        content="AlgoVision X - Interactive Data Structures and Algorithms Visualization Platform">
+
+    <title>AlgoVision X | DSA Visualizer</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-    <!-- SIDEBAR -->
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
 
     <aside class="sidebar">
 
-        <h2>AlgoVision X</h2>
+        <div class="logo">
+            <div class="logo-icon">AX</div>
 
-        <ul>
+            <div>
+                <h2>AlgoVision X</h2>
+                <span>DSA Visualizer</span>
+            </div>
+        </div>
 
-            <li onclick="selectDS('Array')">
+        <div class="sidebar-title">
+            DATA STRUCTURES
+        </div>
+
+        <nav>
+
+            <button class="ds-item active" data-ds="Array"
+                onclick="selectDS('Array')">
+                <span>▦</span>
                 Array
-            </li>
+            </button>
 
-            <li onclick="selectDS('String')">
+            <button class="ds-item" data-ds="String"
+                onclick="selectDS('String')">
+                <span>𝕊</span>
                 String
-            </li>
+            </button>
 
-            <li onclick="selectDS('Stack')">
+            <button class="ds-item" data-ds="Stack"
+                onclick="selectDS('Stack')">
+                <span>▥</span>
                 Stack
-            </li>
+            </button>
 
-            <li onclick="selectDS('Queue')">
+            <button class="ds-item" data-ds="Queue"
+                onclick="selectDS('Queue')">
+                <span>≡</span>
                 Queue
-            </li>
+            </button>
 
-            <li onclick="selectDS('Linked List')">
+            <button class="ds-item" data-ds="Linked List"
+                onclick="selectDS('Linked List')">
+                <span>→</span>
                 Linked List
-            </li>
+            </button>
 
-        </ul>
+        </nav>
+
+        <!-- Sidebar Footer -->
+
+        <div class="sidebar-footer">
+
+            <p>Learn • Visualize • Understand</p>
+
+            <span>Built with HTML, CSS & JavaScript</span>
+
+        </div>
 
     </aside>
 
-    <!-- MAIN CONTENT -->
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
 
     <main class="main-content">
 
-        <!-- HERO SECTION -->
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <span class="breadcrumb">
+                    DSA / Visualizer
+                </span>
+
+                <h3 id="selectedDS">
+                    Array
+                </h3>
+
+            </div>
+
+            <button class="reset-btn"
+                onclick="resetVisualizer()">
+
+                ↻ Reset
+
+            </button>
+
+        </header>
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
 
         <section class="hero">
 
-            <h1>
-                Interactive DSA Learning Platform
-            </h1>
+            <div class="hero-content">
 
-            <p>
-                Learn Data Structures & Algorithms through
-                Visualization, Complexity Analysis and C++ Code.
+                <span class="hero-badge">
+                    🚀 INTERACTIVE LEARNING
+                </span>
+
+                <h1>
+                    Master DSA Through
+                    <span>Visualization</span>
+                </h1>
+
+                <p>
+                    Understand Data Structures and Algorithms
+                    by watching every operation step-by-step.
+                </p>
+
+                <div class="hero-features">
+
+                    <span>✓ Step-by-step execution</span>
+                    <span>✓ Complexity analysis</span>
+                    <span>✓ C++ implementation</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             DASHBOARD
+        ================================================== -->
+
+        <section class="dashboard">
+
+
+            <div class="dash-card">
+
+                <div class="dash-icon">
+                    DS
+                </div>
+
+                <div>
+
+                    <span class="dash-label">
+                        Selected DS
+                    </span>
+
+                    <p id="dashDS">
+                        Array
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="dash-card">
+
+                <div class="dash-icon">
+                    #
+                </div>
+
+                <div>
+
+                    <span class="dash-label">
+                        Total Elements
+                    </span>
+
+                    <p id="dashElements">
+                        0
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="dash-card">
+
+                <div class="dash-icon">
+                    ⚡
+                </div>
+
+                <div>
+
+                    <span class="dash-label">
+                        Current Operation
+                    </span>
+
+                    <p id="dashOperation">
+                        None
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="dash-card">
+
+                <div class="dash-icon">
+                    O
+                </div>
+
+                <div>
+
+                    <span class="dash-label">
+                        Complexity
+                    </span>
+
+                    <p id="dashComplexity">
+                        -
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             INPUT SECTION
+        ================================================== -->
+
+        <section class="card">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-number">
+                        01
+                    </span>
+
+                    <h2>
+                        Input Data
+                    </h2>
+
+                </div>
+
+                <span class="section-info">
+                    Enter your data
+                </span>
+
+            </div>
+
+
+            <div class="input-wrapper">
+
+                <input
+                    type="text"
+                    id="userInput"
+                    placeholder="Example: 10 20 30 40 50"
+                    autocomplete="off"
+                >
+
+                <button
+                    class="primary-btn"
+                    onclick="loadInputData()">
+
+                    Load Data
+                    <span>→</span>
+
+                </button>
+
+            </div>
+
+
+            <p class="input-hint">
+                💡 For arrays use space-separated numbers.
+                For strings enter normal text.
             </p>
 
         </section>
 
-        <!-- DASHBOARD -->
 
-        <section class="dashboard">
+        <!-- =================================================
+             OPERATIONS
+        ================================================== -->
 
-            <div class="dash-card">
+        <section class="card">
 
-                <h3>Selected DS</h3>
+            <div class="section-header">
 
-                <p id="dashDS">
-                    Array
-                </p>
+                <div>
 
-            </div>
+                    <span class="section-number">
+                        02
+                    </span>
 
-            <div class="dash-card">
+                    <h2>
+                        Operations
+                    </h2>
 
-                <h3>Total Elements</h3>
+                </div>
 
-                <p id="dashElements">
-                    0
-                </p>
-
-            </div>
-
-            <div class="dash-card">
-
-                <h3>Current Operation</h3>
-
-                <p id="dashOperation">
-                    None
-                </p>
+                <span class="section-info">
+                    Choose an operation
+                </span>
 
             </div>
 
-            <div class="dash-card">
 
-                <h3>Complexity</h3>
+            <div id="operationContainer"
+                class="operation-grid">
 
-                <p id="dashComplexity">
-                    -
-                </p>
+                <!-- JavaScript will generate operations -->
+
+                <div class="empty-state">
+
+                    Select a data structure
+                    to view operations.
+
+                </div>
 
             </div>
 
         </section>
 
-        <!-- SELECTED DS -->
+
+        <!-- =================================================
+             ALGORITHMS
+        ================================================== -->
 
         <section class="card">
 
-            <h2>
-                Selected Data Structure
-            </h2>
+            <div class="section-header">
 
-            <h3 id="selectedDS">
-                Array
-            </h3>
+                <div>
 
-        </section>
+                    <span class="section-number">
+                        03
+                    </span>
 
-        <!-- INPUT SECTION -->
+                    <h2>
+                        Algorithms
+                    </h2>
 
-        <section class="card">
+                </div>
 
-            <h2>
-                Input Data
-            </h2>
+                <span class="section-info">
+                    Available algorithms
+                </span>
 
-            <input
-            type="text"
-            id="userInput"
-            placeholder="Example: 10 20 30 40 50">
+            </div>
 
-            <button onclick="showOperations()">
-                Continue
-            </button>
 
-        </section>
+            <div id="algorithmContainer"
+                class="algorithm-grid">
 
-        <!-- OPERATIONS -->
+                <div class="algorithm-card">
 
-        <section class="card">
+                    <div class="algorithm-icon">
+                        ↕
+                    </div>
 
-            <h2>
-                Operations
-            </h2>
+                    <h3>
+                        Bubble Sort
+                    </h3>
 
-            <div id="operationContainer">
+                    <p>
+                        Compare and swap adjacent elements.
+                    </p>
 
-                Select Data Structure
+                    <span>
+                        O(n²)
+                    </span>
+
+                </div>
+
+
+                <div class="algorithm-card">
+
+                    <div class="algorithm-icon">
+                        🔍
+                    </div>
+
+                    <h3>
+                        Linear Search
+                    </h3>
+
+                    <p>
+                        Search elements one by one.
+                    </p>
+
+                    <span>
+                        O(n)
+                    </span>
+
+                </div>
 
             </div>
 
         </section>
 
-        <!-- ALGORITHMS -->
 
-        <section class="card">
+        <!-- =================================================
+             VISUALIZATION
+        ================================================== -->
 
-            <h2>
-                Available Algorithms
-            </h2>
+        <section class="card visualization-card">
 
-            <div id="algorithmContainer">
+            <div class="section-header">
 
-                Algorithms will appear here
+                <div>
+
+                    <span class="section-number">
+                        04
+                    </span>
+
+                    <h2>
+                        Visualization
+                    </h2>
+
+                </div>
+
+                <div class="visual-status">
+
+                    <span class="status-dot"></span>
+
+                    Ready
+
+                </div>
 
             </div>
 
-        </section>
-
-        <!-- VISUALIZATION -->
-
-        <section class="card">
-
-            <h2>
-                Visualization
-            </h2>
 
             <div id="visualizer">
 
-                Visualization Area
+                <div class="visual-empty">
+
+                    <div class="visual-empty-icon">
+                        ◈
+                    </div>
+
+                    <h3>
+                        Visualization Area
+                    </h3>
+
+                    <p>
+                        Load data and select an operation
+                        to begin visualization.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Visualization Controls -->
+
+            <div class="visual-controls">
+
+                <button
+                    onclick="previousStep()"
+                    class="control-btn">
+
+                    ← Previous
+
+                </button>
+
+                <button
+                    onclick="nextStep()"
+                    class="control-btn primary-control">
+
+                    Next →
+
+                </button>
+
+                <button
+                    onclick="playAnimation()"
+                    class="control-btn">
+
+                    ▶ Play
+
+                </button>
+
+                <button
+                    onclick="pauseAnimation()"
+                    class="control-btn">
+
+                    ⏸ Pause
+
+                </button>
 
             </div>
 
         </section>
 
-        <!-- STEP EXPLANATION -->
+
+        <!-- =================================================
+             EXPLANATION
+        ================================================== -->
 
         <section class="card">
 
-            <h2>
-                Step-by-Step Explanation
-            </h2>
+            <div class="section-header">
 
-            <div id="explanation">
+                <div>
 
-                Explanation will appear here
+                    <span class="section-number">
+                        05
+                    </span>
+
+                    <h2>
+                        Step-by-Step Explanation
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div id="explanation"
+                class="explanation-box">
+
+                <div class="explanation-icon">
+                    💡
+                </div>
+
+                <div>
+
+                    <h3>
+                        How it works
+                    </h3>
+
+                    <p>
+                        Select an operation to see a
+                        detailed explanation here.
+                    </p>
+
+                </div>
 
             </div>
 
         </section>
 
-        <!-- COMPLEXITY -->
+
+        <!-- =================================================
+             COMPLEXITY
+        ================================================== -->
 
         <section class="card">
 
-            <h2>
-                Time & Space Complexity
-            </h2>
+            <div class="section-header">
 
-            <table>
+                <div>
 
-                <tr>
+                    <span class="section-number">
+                        06
+                    </span>
 
-                    <th>Case</th>
+                    <h2>
+                        Time & Space Complexity
+                    </h2>
 
-                    <th>Complexity</th>
+                </div>
 
-                </tr>
+            </div>
 
-                <tr>
 
-                    <td>Best</td>
+            <div class="complexity-table-wrapper">
 
-                    <td id="bestCase">
-                        -
-                    </td>
+                <table>
 
-                </tr>
+                    <thead>
 
-                <tr>
+                        <tr>
 
-                    <td>Average</td>
+                            <th>
+                                Case
+                            </th>
 
-                    <td id="avgCase">
-                        -
-                    </td>
+                            <th>
+                                Time Complexity
+                            </th>
 
-                </tr>
+                        </tr>
 
-                <tr>
+                    </thead>
 
-                    <td>Worst</td>
 
-                    <td id="worstCase">
-                        -
-                    </td>
+                    <tbody>
 
-                </tr>
+                        <tr>
 
-                <tr>
+                            <td>
+                                <span class="case-badge best">
+                                    Best
+                                </span>
+                            </td>
 
-                    <td>Space</td>
+                            <td id="bestCase">
+                                -
+                            </td>
 
-                    <td id="spaceCase">
-                        -
-                    </td>
+                        </tr>
 
-                </tr>
 
-            </table>
+                        <tr>
+
+                            <td>
+                                <span class="case-badge average">
+                                    Average
+                                </span>
+                            </td>
+
+                            <td id="avgCase">
+                                -
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <span class="case-badge worst">
+                                    Worst
+                                </span>
+                            </td>
+
+                            <td id="worstCase">
+                                -
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <span class="case-badge space">
+                                    Space
+                                </span>
+                            </td>
+
+                            <td id="spaceCase">
+                                -
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
 
         </section>
 
-        <!-- C++ CODE -->
+
+        <!-- =================================================
+             C++ CODE
+        ================================================== -->
 
         <section class="card">
 
-            <h2>
-                C++ Implementation
-            </h2>
+            <div class="section-header">
 
-            <pre>
-<code id="cppCode">
+                <div>
 
-Select Any Algorithm To View Code
+                    <span class="section-number">
+                        07
+                    </span>
 
-</code>
-            </pre>
+                    <h2>
+                        C++ Implementation
+                    </h2>
+
+                </div>
+
+                <span class="language-badge">
+                    C++
+                </span>
+
+            </div>
+
+
+            <div class="code-container">
+
+                <div class="code-header">
+
+                    <div class="code-dots">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                    <span>
+                        algorithm.cpp
+                    </span>
+
+                    <button
+                        onclick="copyCode()"
+                        class="copy-btn">
+
+                        Copy
+
+                    </button>
+
+                </div>
+
+
+                <pre><code id="cppCode">Select an algorithm to view its C++ implementation.</code></pre>
+
+            </div>
 
         </section>
+
+
+        <!-- =================================================
+             OPERATION HISTORY
+        ================================================== -->
+
+        <section class="card">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-number">
+                        08
+                    </span>
+
+                    <h2>
+                        Operation History
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div id="historyContainer"
+                class="history-container">
+
+                <div class="empty-history">
+
+                    No operations performed yet.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer>
+
+            <div>
+
+                <strong>
+                    AlgoVision X
+                </strong>
+
+                <span>
+                    Interactive DSA Learning Platform
+                </span>
+
+            </div>
+
+            <p>
+                Built for learning Data Structures &
+                Algorithms
+            </p>
+
+        </footer>
 
     </main>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
+
